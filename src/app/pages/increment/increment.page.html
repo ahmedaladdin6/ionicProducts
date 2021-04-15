@@ -1,0 +1,9 @@
+<div class="content">  
+  <div class="button" [class.disabledBtn]="number == 0" (click)="changeValue('-')">
+    <span>-</span>
+    </div>
+    <input type="number"  [(ngModel)]="number" (focusout)="onFocusOut(number)" >
+    <div class="button"(click)="changeValue('+')">
+      <span>+</span>
+    </div>
+</div>

@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { ArabicNumberPipe } from '../../core/providers/numberToArabic.pipe';
+import { IncrementPage } from '../increment/increment.page';
+import { HeaderPage } from 'src/app/shared/header/header.page';
 
 
 @NgModule({
@@ -14,6 +17,6 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,ArabicNumberPipe,IncrementPage,HeaderPage]
 })
 export class HomePageModule {}

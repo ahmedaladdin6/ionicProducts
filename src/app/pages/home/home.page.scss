@@ -1,0 +1,130 @@
+
+/*global in this page*/
+.block{
+  display: block;
+}
+.lightText{
+  font-size: 10px;
+  color:rgb(180, 175, 175)
+}
+
+/*spiner and loading style*/
+ion-spinner{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.pageLoading{
+  pointer-events: none;
+  opacity: 0.4;
+
+}
+
+/*fixed header*/
+div.fixedHeader{
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 8px 6px -6px #e0dada ;
+  z-index: 10;
+  ion-segment{
+    padding:10px 10px 20px 10px;
+    ion-segment-button{
+      min-width: 100px;
+      margin-right:5px;
+      img{
+         max-width: unset;
+         border-radius: 5px;
+      }
+  }
+  }
+  .activeCategory{
+    border: 3px solid #500866;
+  }
+}
+
+/*card content*/
+div.cardContent{
+  margin: 180px 0 80px 0;
+  background-color: #f7fcfd;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  ion-card{
+    position: relative;
+    width:44%;
+    height: 300px;
+    ion-card-header{
+      img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+       }
+    }
+    ion-card-content{
+      text-align: right;
+       span.productName{
+         font-weight: bolder;
+         font-size: 12px;
+       }
+       span.calories{
+         direction: rtl;
+       }
+       span.price{
+         font-size: 10px;
+       }
+    }
+    div{
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      ion-button{
+        width:80%;
+        margin: auto;
+        --background:#500866;
+      }
+    }
+   
+  }
+ 
+}
+
+/*price*/
+div.price{
+  .info{
+    color:rgb(180, 175, 175);
+    margin-bottom:10px ;
+  }
+  .value{
+      color:#500866
+  }
+  div.cart{
+    position: relative;
+    ion-icon{
+      font-size: 30px;
+    }
+    ion-badge{
+      position: absolute;
+      top:10px;
+      --background:#500866;
+      // color:green
+    }
+  }
+
+  background-color:#fff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  padding :10px 10px 23px 10px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 5px 6px 6px #e0dada ;
+
+}

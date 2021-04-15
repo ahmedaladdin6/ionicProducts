@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+  <ion-spinner *ngIf="loading" name="bubbles"></ion-spinner>
+
+  <div class="fixedHeader">
+    <app-header></app-header>
+
+    <ion-segment scrollable swipe-gesture="false">
+      <ng-container *ngFor="let category of categories">
+        <ion-segment-button (click)="selectedCategory(category?.id)">
+          <img [class.activeCategory]="category?.id == categoryActive" [src]="category?.image" alt="" width="100"
+            height="100">
+        </ion-segment-button>
+      </ng-container>
+    </ion-segment>
+
+  </div>
+
+  <div class="cardContent" [class.pageLoading]="loading">
+    <ion-card *ngFor="let product of products">
+      <ion-card-header>
+        <img [src]="product?.image" [alt]="product?.image_name" width="100" height="100">
+      </ion-card-header>
+
+      <ion-card-content>
+        <span class="productName block"> {{product?.name_ar}}</span>
+        <span class="calories block">
+          <span class="lightText" *ngIf="product?.size !=''">({{product?.size}}) </span>
+          <span class="lightText" *ngIf="product?.size ==''">(الحجم غير معرف) </span>
+        </span>
+        <span class="productPrice">
+          {{product?.price|arabicNumber}}
+          <span class="lightText">ج.م</span>
+        </span>
+      </ion-card-content>
+      <div *ngIf="product?.id !== selectProduct?.id" class="btn">
+        <ion-button expand="full" (click)="addToCart(product)">أضف الي السلة</ion-button>
+      </div>
+      <div class="btn" *ngIf="product?.id === selectProduct?.id">
+        <app-increment (numberOfItems)="numberOfItems($event)"></app-increment>
+      </div>
+    </ion-card>
+  </div>
+
+
+  <div class="price">
+    <div class="cart">
+      <ion-icon class="info" name="cart-outline"></ion-icon> 
+      <ion-badge *ngIf="numberOfItemsCart !=0">{{numberOfItemsCart}}</ion-badge>
+    </div>
+    <div>
+      <span class="info block"> التوصيل</span>
+      <span class="block value"> مجاني</span>
+
+    </div>
+    <div>
+      <span class="info block"> الحساب</span>
+      <span class="block value">
+         {{selectProduct?.price * numberOfItemsCart |arabicNumber}} 
+         <span class="lightText">ج.م</span>
+        </span>
+    </div>
+  </div>
+</ion-content>
