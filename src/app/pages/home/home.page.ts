@@ -7,7 +7,7 @@ export interface IProducts {
   name_ar: string
   calories: number
   image: string
-  display: false;
+  addToCart: false;
 }
 
 
@@ -19,7 +19,7 @@ export interface IProducts {
 
 
 export class HomePage {
-  numberOfItemsCart =0
+  numberOfItemsCart = 0
   categories
   selectProduct
   categoryActive = null
@@ -29,7 +29,7 @@ export class HomePage {
     this.getAllCategories(0, 30)
   }
 
- 
+
 
 
   getAllCategories(start, limit) {
@@ -55,14 +55,17 @@ export class HomePage {
 
   getAllProduct_Of_SelectedCategory(categoryID) {
     let selectedCategory = this.categories.filter(res => res.id == categoryID)
-    this.products = selectedCategory[0].products;
-    console.log(selectedCategory);
+    let prod = selectedCategory[0].products;
+    prod.map(res => {
+      Object.assign(res, { addToCart: false })
+    })
+    this.products = prod
+    console.log(this.products);
 
   }
 
   addToCart(product) {
-    this.selectProduct = product
-
+    this.selectProduct = Object.assign(product, { addToCart: true })
   }
 
 
@@ -72,9 +75,8 @@ export class HomePage {
   }
 
 
-  numberOfItems(e){
-console.log(e);
-this.numberOfItemsCart = e
+  numberOfItems(valueFromIncrementPage) {
+    this.numberOfItemsCart = valueFromIncrementPage
 
   }
 }

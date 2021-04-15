@@ -32,10 +32,10 @@
           <span class="lightText">ج.م</span>
         </span>
       </ion-card-content>
-      <div *ngIf="product?.id !== selectProduct?.id" class="btn">
+      <div *ngIf="!product?.addToCart" class="btn">
         <ion-button expand="full" (click)="addToCart(product)">أضف الي السلة</ion-button>
       </div>
-      <div class="btn" *ngIf="product?.id === selectProduct?.id">
+      <div class="btn" *ngIf="product?.addToCart">
         <app-increment (numberOfItems)="numberOfItems($event)"></app-increment>
       </div>
     </ion-card>
